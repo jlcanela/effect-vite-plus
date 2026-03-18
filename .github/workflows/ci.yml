@@ -3,6 +3,11 @@ name: CI
 on:
   push:
     branches: [main]
+    paths:
+      - "apps/website/**"
+      - "packages/**"
+      - "*.config.ts"
+      - "pnpm-lock.yaml"
   pull_request:
 
 jobs:
