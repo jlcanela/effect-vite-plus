@@ -3,6 +3,9 @@ import { defineConfig } from "vite-plus";
 export default defineConfig({
   run: {
     tasks: {
+      dev: {
+        command: "tsx watch src/index.ts",
+      },
       "podman-build": {
         command: "podman build -t website:latest .",
         dependsOn: ["pack"],
