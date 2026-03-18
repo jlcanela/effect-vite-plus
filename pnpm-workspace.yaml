@@ -4,8 +4,11 @@ packages:
   - tools/*
 
 catalog:
-  "@effect/platform-node": 4.0.0-beta.34
-  "@types/node": ^25
+  '@effect/ai-openai-compat': 4.0.0-beta.35
+  '@effect/platform-node': 4.0.0-beta.34
+  '@types/node': ^25
+  dotenv: ^17.3.1
+  dotenv-cli: ^11.0.0
   effect: 4.0.0-beta.34
   tsx: ^4.21.0
   typescript: ^5
@@ -15,12 +18,12 @@ catalog:
 
 catalogMode: prefer
 overrides:
-  vite: "catalog:"
-  vitest: "catalog:"
+  vite: 'catalog:'
+  vitest: 'catalog:'
 peerDependencyRules:
   allowAny:
     - vite
     - vitest
   allowedVersions:
-    vite: "*"
-    vitest: "*"
+    vite: '*'
+    vitest: '*'

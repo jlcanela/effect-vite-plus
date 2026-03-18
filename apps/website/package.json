@@ -5,12 +5,15 @@
   "type": "module",
   "sideEffects": false,
   "scripts": {
-    "preview": "vp preview"
+    "preview": "vp preview",
+    "ai": "dotenv -e ../../.env -- tsx src/sample-ai.ts"
   },
   "dependencies": {
+    "@effect/ai-openai-compat": "catalog:",
     "@effect/platform-node": "catalog:"
   },
   "devDependencies": {
+    "dotenv-cli": "catalog:",
     "effect": "catalog:",
     "tsx": "catalog:",
     "typescript": "~5.9.3",

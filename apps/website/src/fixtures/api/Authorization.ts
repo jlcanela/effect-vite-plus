@@ -1,13 +1,14 @@
-import { Schema, ServiceMap } from "effect";
-import { HttpApiMiddleware, HttpApiSecurity } from "effect/unstable/httpapi";
-import type { User } from "../domain/User";
+import { Schema, ServiceMap } from 'effect';
+import { HttpApiMiddleware, HttpApiSecurity } from 'effect/unstable/httpapi';
+
+import type { User } from '../domain/User';
 
 export class CurrentUser extends ServiceMap.Service<CurrentUser, User>()(
-  "acme/HttpApi/Authorization/CurrentUser",
+  'acme/HttpApi/Authorization/CurrentUser',
 ) {}
 
 export class Unauthorized extends Schema.TaggedErrorClass<Unauthorized>()(
-  "Unauthorized",
+  'Unauthorized',
   {
     message: Schema.String,
   },
@@ -26,7 +27,7 @@ export class Authorization extends HttpApiMiddleware.Service<
     // specify those as well.
     requires: never;
   }
->()("acme/HttpApi/Authorization", {
+>()('acme/HttpApi/Authorization', {
   // This middleware requires clients to also provide an implementation, to
   // inject a api key
   requiredForClient: true,

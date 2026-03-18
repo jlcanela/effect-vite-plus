@@ -12,32 +12,33 @@
  * Define a schema-first API, implement handlers, secure endpoints with
  * middleware, serve it over HTTP, and call it using a generated typed client.
  */
-import { NodeHttpServer, NodeRuntime } from "@effect/platform-node";
-import { Effect, Layer } from "effect";
-import { HttpRouter } from "effect/unstable/http";
-import { HttpApiBuilder, HttpApiScalar } from "effect/unstable/httpapi";
-import { createServer } from "node:http";
+import { NodeHttpServer, NodeRuntime } from '@effect/platform-node';
+import { Effect, Layer } from 'effect';
+import { HttpRouter } from 'effect/unstable/http';
+import { HttpApiBuilder, HttpApiScalar } from 'effect/unstable/httpapi';
+import { createServer } from 'node:http';
+
 // Api definitions should **always** be seperate from the server implementation,
 // so that they can be shared between the server and client without leaking
 // server code into clients.
 // Ideally, the would use a seperate package in a monorepo.
-import { Api } from "./fixtures/api/Api.js";
-import { UsersApiHandlers } from "./fixtures/server/Users/http";
+import { Api } from './fixtures/api/Api.js';
+import { UsersApiHandlers } from './fixtures/server/Users/http';
 
 // This walkthrough focuses on runtime wiring and typed client usage.
 // See the fixture files for the API schemas, endpoint definitions and handlers:
 
 const SystemApiHandlers = HttpApiBuilder.group(
   Api,
-  "system",
+  'system',
   Effect.fn(function* (handlers) {
     yield* Effect.yieldNow;
-    return handlers.handle("health", () => Effect.void);
+    return handlers.handle('health', () => Effect.void);
   }),
 );
 
 const ApiRoutes = HttpApiBuilder.layer(Api, {
-  openapiPath: "/openapi.json",
+  openapiPath: '/openapi.json',
 }).pipe(
   // Provide all the handler Layers for the API.
   Layer.provide([UsersApiHandlers, SystemApiHandlers]),
@@ -45,7 +46,7 @@ const ApiRoutes = HttpApiBuilder.layer(Api, {
 
 // Define a /docs route that serves scalar documentation
 const DocsRoute = HttpApiScalar.layer(Api, {
-  path: "/docs",
+  path: '/docs',
 });
 
 // Merge all the http routes together

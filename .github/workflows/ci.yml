@@ -4,10 +4,10 @@ on:
   push:
     branches: [main]
     paths:
-      - "apps/website/**"
-      - "packages/**"
-      - "*.config.ts"
-      - "pnpm-lock.yaml"
+      - 'apps/website/**'
+      - 'packages/**'
+      - '*.config.ts'
+      - 'pnpm-lock.yaml'
       - .github/workflows/ci.yml
   pull_request:
 
@@ -22,7 +22,7 @@ jobs:
 
       - uses: voidzero-dev/setup-vp@v1
         with:
-          node-version: "25"
+          node-version: '25'
           cache: true
 
       - run: vp install

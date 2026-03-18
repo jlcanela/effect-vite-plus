@@ -1,6 +1,7 @@
-import { Effect, Layer, Ref, ServiceMap } from "effect";
-import { User, UserId } from "../domain/User.ts";
-import { SearchQueryTooShort, UserNotFound, UsersError } from "../domain/UserErrors.ts";
+import { Effect, Layer, Ref, ServiceMap } from 'effect';
+
+import { User, UserId } from '../domain/User.ts';
+import { SearchQueryTooShort, UserNotFound, UsersError } from '../domain/UserErrors.ts';
 
 export class Users extends ServiceMap.Service<
   Users,
@@ -12,7 +13,7 @@ export class Users extends ServiceMap.Service<
       readonly email: string;
     }): Effect.Effect<User, UsersError>;
   }
->()("acme/Users") {
+>()('acme/Users') {
   static readonly layer = Layer.effect(
     Users,
     Effect.gen(function* () {
@@ -21,14 +22,14 @@ export class Users extends ServiceMap.Service<
           1,
           new User({
             id: UserId.makeUnsafe(1),
-            name: "Admin",
-            email: "admin@acme.dev",
+            name: 'Admin',
+            email: 'admin@acme.dev',
           }),
         ],
       ]);
       const nextId = yield* Ref.make(2);
 
-      const list = Effect.fn("UsersRepo.list")(function* (search: string | undefined) {
+      const list = Effect.fn('UsersRepo.list')(function* (search: string | undefined) {
         const allUsers = Array.from(users.values());
         if (search === undefined || search.length === 0) {
           return allUsers;
@@ -46,7 +47,7 @@ export class Users extends ServiceMap.Service<
         );
       });
 
-      const getById = Effect.fn("UsersRepo.getById")(function* (id: UserId) {
+      const getById = Effect.fn('UsersRepo.getById')(function* (id: UserId) {
         yield* Effect.annotateCurrentSpan({ id });
         const user = users.get(id);
         if (user === undefined) {
@@ -57,7 +58,7 @@ export class Users extends ServiceMap.Service<
         return user;
       });
 
-      const create = Effect.fn("UsersRepo.create")(function* (input: {
+      const create = Effect.fn('UsersRepo.create')(function* (input: {
         readonly name: string;
         readonly email: string;
       }) {
