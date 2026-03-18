@@ -1,0 +1,21 @@
+{
+  "name": "website",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "sideEffects": false,
+  "scripts": {
+    "dev": "tsx src/index.ts",
+    "preview": "vp preview"
+  },
+  "dependencies": {
+    "@effect/platform-node": "catalog:"
+  },
+  "devDependencies": {
+    "effect": "catalog:",
+    "tsx": "catalog:",
+    "typescript": "~5.9.3",
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
+  }
+}
