@@ -1,3 +1,5 @@
+[![CI](https://github.com/jlcanela/effect-vite-plus/actions/workflows/ci.yml/badge.svg)](https://github.com/jlcanela/effect-vite-plus/actions/workflows/ci.yml)
+
 # Vite+ Monorepo Starter
 
 A starter for creating a Vite+ monorepo.
