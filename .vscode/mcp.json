@@ -1,0 +1,9 @@
+{
+  "servers": {
+    "effect-mcp": {
+      "type": "stdio",
+      "command": "podman",
+      "args": ["run", "--rm", "-i", "timsmart/effect-mcp"]
+    }
+  }
+}
